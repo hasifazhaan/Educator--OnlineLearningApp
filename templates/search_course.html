@@ -1,0 +1,81 @@
+{% extends 'base.html'%}
+
+{% block title%}
+Search Course
+{% endblock %}
+{% block search%}
+active
+{%endblock%}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/search_course.css')}}" />
+
+{% endblock %}
+
+
+{% block Bodyblock%}
+
+
+<div class="content-area ">
+    <div class="options">
+
+        <div class="header">
+            Search Courses
+        </div>
+        <form action="Recommend_Courses#section1" method="POST" class="form">
+            <div>
+                <input type="text" required name="search_input" placeholder="Type Something... eg :Python" />
+                <input type="submit" name="get_name" id='btn_' value="Search" />
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<div >
+
+
+<div class="heading-cards" id="section1">
+    <h1>
+        Searched Result.
+    </h1>
+</div>
+<div class="cards ">
+
+
+    {% if courselist %}
+    {%for i in courselist%}
+    <div class="card">
+        <img class="card-img-top" src="{{url_for('static', filename= 'images/courseimage/'+i.url) }}"
+            alt="Image Not Found....">
+        <div class="card-body">
+            <h5 class="card-title">{{i.course_title}}</h5>
+            <p class="card-text">{{i.description}}</p>
+
+            {% if i.registered %}
+            <a href="{{ url_for('modules',course_id =i.ids,subject=i.course_title ) }}"><button class="btn btn-outline-danger btn-lg btn-block"> Start Learning </button></a>
+
+            {%else%}
+            <a href="{{url_for('payment_course',course_id = i.id)}}"> <button class="btn btn-outline-success"> Buy @ RS
+                    {{i.price}} </button></a>
+            or
+
+            <button class="btn btn-outline-danger"> Add to Wishlist </button>
+
+            {% endif %}
+
+        </div>
+    </div>
+    {%endfor%}
+    {%else%}
+    <div class="not-present"> Sorry, we don't have courses related to your search.try with other words </div>
+    {% endif %}
+</div>
+</div>
+
+
+{% endblock %}
+{% block javascript%}
+<!-- <script src="/static/js/main.js"></script> -->
+
+{% endblock %}

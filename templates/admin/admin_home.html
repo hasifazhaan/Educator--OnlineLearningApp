@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <link rel = "shortcut icon" href="/static/images/favicon.ico"/> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/admin_home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Educator | Admin</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">
+            <h1 class="Logo"> EDUCATOR</h1>
+            <span class="slogan">An Online Learning App</span>
+          </a>
+    </nav>
+    <div class="Message">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        
+            {% for category, message in messages %}
+            <div  class="alert alert-warning" role="alert">{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+
+            {% endfor %}
+        
+        {% endif %}
+        {% endwith %}
+    </div>
+    <section class="Options">
+        <!-- <div class="Admin-Details">
+            <div class="img-top">
+                <img src="/static/images/chip.png"/>
+            </div>
+            <h1>
+                Welcome, Admin
+            </h1>
+        </div> -->
+        <div class="Admin-Details">
+            <div class="img-top">
+                <img src="/static/images/courseimage/bf2.jpg"/>
+            </div>
+            <div>
+                <h4>
+                    Welcome Admin
+                </h4>
+            </div>
+        </div>
+        <div class="menuoptions">
+            <button  id ="Home" class="active-menu"><i class="fa fa-home" aria-hidden="true" style='font-size:36px'></i>&nbsp; Home</button>
+            <button  id ="Course" ><i class="fa-solid fa-book-open"></i> &nbsp; Course</button>
+            <button  id ="Modules" ><i class='fas fa-puzzle-piece' style='font-size:36px'></i> &nbsp; Modules</button>
+            <button  id ="Analize" ><i class='fas fa-poll' style='font-size:36px'></i> &nbsp; Insights</button>
+            <button  id ="Modules" onclick=" window.location.href = '{{url_for('admin_login')}}'" > <i class="fa fa-sign-out" style="font-size:36px"></i> &nbsp; Logout</button>
+
+        </div>
+        
+    </section>
+    <section class="Container">
+        
+
+      
+    </section>
+</body>
+
+<script>
+    $(document).ready(()=>{
+        
+        $('#Home').click(()=>{
+            addpage(`{% include "admin/admin_homepage.html"%}`,"#Home")
+            useruptime()
+        })
+        $('#Course').click(()=>{
+            addpage(`{% include "admin/admin_courses.html"%}`,"#Course")
+        })
+        $('#Modules').click(()=>{
+            addpage(`{% include "admin/admin_modules.html"%}`,"#Modules")  
+        })
+        $('#Analize').click(()=>{
+            window.location.href = "{{ url_for('analizeadmin')}}" 
+        })
+
+        $("#Home").click();
+
+    })
+
+const addpage = (html_page,btn)=>{
+    $(".Container").empty()
+    $('.Container').html(html_page)
+    $('.menuoptions').children().removeClass("active-menu")
+    $(btn).addClass("active-menu")
+}
+var course_list = []
+const course_fcn = (options)=>{
+    if (options == 'add'){
+        addpage(`{% include "admin/addcourse.html"%}`,"#Course")  
+        $.ajax({
+            type: "GET",
+            url: "/getcoursecount",
+            success: function(result) {
+                let c_id = parseInt(result['c_id'])
+                if (isNaN(c_id)){
+                    c_id = 0
+                }
+                $('#c_id').val(c_id)
+            } 
+        });
+
+    }
+    if (options == 'del'){
+        addpage(`{% include "admin/deletecourse.html"%}`,"#Course")  
+        $.ajax({
+            type: "POST",
+            url: "/getcouorseno",
+            success: function(result) {
+                course_list = result['result']
+                for (let i in course_list)
+                {
+                    $('#c_id').append('<option value="'+course_list[i][0]+'">'+course_list[i][0]+'</option>')
+                }
+            
+            } 
+        });
+
+    }
+    if (options == 'update'){
+        addpage(`{% include "admin/updatecourse.html"%}`,"#Course")  
+        $.ajax({
+            type: "POST",
+            url: "/getcouorseno",
+            success: function(result) {
+                course_list = result['result']
+                for (let i in course_list)
+                {
+                    $('#c_id').append('<option value="'+course_list[i][0]+'">'+course_list[i][0]+'</option>')
+                }
+            
+            } 
+        });
+
+    }
+
+}
+
+
+
+var course_list = []
+const Modules_fcn = (options)=> {
+    if (options =='Add'){
+        addpage(`{% include "admin/admin_addmodules.html"%}`,"#Modules")  
+        $.ajax({
+            type: "POST",
+            url: "/getcouorseno",
+            success: function(result) {
+                course_list = result['result']
+                for (let i in course_list)
+                {   
+                    $('#c_id').append('<option value="'+course_list[i][0]+'">'+course_list[i][0]+'</option>')
+                }
+            
+            } 
+        });
+    }    
+    if (options =='del'){
+        addpage(`{% include "admin/admin_deletemodules.html"%}`,"#Modules")  
+        $.ajax({
+            type: "POST",
+            url: "/getcouorseno",
+            success: function(result) {
+                course_list = result['result']
+                for (let i in course_list)
+                {   
+                    $('#c_id').append('<option value="'+course_list[i][0]+'">'+course_list[i][0]+'</option>')
+                }
+            
+            } 
+        });
+    } 
+}
+
+const getmoduleindex =(sel)=>{
+
+
+} 
+const getcoursecontent_update=(sel)=>{
+    selcourse = sel.options[sel.selectedIndex].text
+    $.ajax({
+            type: "POST",
+            url: "/getmoduleindex",
+            data:JSON.stringify({"c_id":selcourse}),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result) {
+                l_id = result['result'].flat(2);
+                for (let i in l_id){
+                    $('#l_id').append('<option value="'+l_id[i]+'">'+l_id[i]+'</option>')
+                }
+               
+            } 
+        });
+}
+
+
+const getcoursecontent_del = (sel)=>{
+    selcourse = sel.options[sel.selectedIndex].text
+    $('#course_name').val(course_list[selcourse][2])
+    $('.course_image').attr('src','/static/images/courseimage/'+course_list[selcourse][1])
+    $('.course_image').show()
+    $('#price').val(course_list[selcourse][3])
+    $('#clevel').val(course_list[selcourse][4])
+    $('#duration').val(course_list[selcourse][5])
+    $('#subject').val(course_list[selcourse][6])
+
+}
+const viewcontentmodule = (sel)=>{
+    $('.coursename').val(course_list[selcourse-1][2])
+    $('.coursename').show()
+    $('.course_image').attr('src','/static/images/courseimage/'+course_list[selcourse-1][1])
+    $('.course_image').show()
+    selcourse = $('#c_id').val()
+    sellecture = sel.options[sel.selectedIndex].text
+    $.ajax({
+            type: "POST",
+            url: "/getlecturename",
+            data:JSON.stringify({"c_id":selcourse,"l_id":sellecture}),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result) {
+                data = (result['result'][0])
+                let name = data[0]
+                let url = data[1]
+                 $('.modulename').val(name)
+                 $('#myVideo').attr('src',"/"+url)
+            } 
+        });
+}
+
+const maketest = (l_id)=>{
+    let id = $('#l_id').val()
+    let cid = $('#c_id').val()
+    if (cid == -1){
+        alert("Select Course Id")   
+    }
+    else{
+    addpage(`{% include "admin/insert_test.html"%}`,"#Modules") 
+    $('#l_id').val(id)
+    $('#c_id').val(cid)
+    }
+    
+}
+
+
+const getcoursecontent = (sel)=>{
+        selcourse = parseInt(sel.options[sel.selectedIndex].text)
+                    $('.course_name').html(course_list[selcourse][2])
+                    $('.course_name').show()
+                    $('.course_image').attr('src','/static/images/courseimage/'+course_list[selcourse][1])
+                    $('.course_image').show()
+                    $.ajax({
+                        type: "POST",
+                        url: "/getlecturecount",
+                        data:JSON.stringify({"c_id":selcourse }),
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function(result) {
+                            let val = result['l_id'][0]
+                            data = val+1
+                            if (val == null){
+                                data= 0
+                            } 
+                            
+                            $("#l_id").val(data)
+                        } 
+                    });
+
+                    
+                    
+    
+}
+const get_courseimage = (course_id)=>
+{
+    $.ajax({
+            type: "POST",
+            url: "/getcourse",
+            success: function(result) {
+                var course_list = result['result'].flat(4)
+                for (var i in course_list){
+                    $('#c_id').append('<option value="'+i+'">'+i+'</option>')
+                }  
+            } 
+        });
+
+}
+let times = 1;
+function create_questiontemplate(){
+     let template  = `
+     <div class="question">
+            <label>Write Question</label>
+            <input type="text"  name="q`+times+`"  style="background-color: #015a7d;" required />
+            <label>Weights</label>
+            <select name="l`+times+`">
+               <option value="0">Easy</option>
+               <option value="1"> Average</option>
+               <option value="2">Difficult</option>
+            </select>
+            <label>Options</label>
+            <div class="alloptions">
+               <div class="options-div">
+                  <label>A:</label>
+                  <input type="text" name="answer`+times+`" id="opt`+times+`" required />
+                  <input type="checkbox" value ='0' name='check`+times+`'/>
+               </div>
+               
+               <div class="options-div">
+                  <label>B:</label>
+                  <input type="text" name="answer`+times+`" id="opt`+times+`" required />
+                  <input type="checkbox" value ='1' name='check`+times+`'/>
+               </div>
+   
+               <div class="options-div">
+                  <label>C:</label>
+                  <input type="text" name="answer`+times+`" id="opt`+times+`" />
+                  <input type="checkbox" value ='2'name='check`+times+`'/>
+               </div>
+   
+               <div class="options-div">
+                  <label>D:</label>
+                  <input type="text" name="answer`+times+`" id="opt`+times+`" />
+                  <input type="checkbox"value ='3' name='check`+times+`'/>
+               </div>
+            </div>
+            <div>
+               <button type="button" onclick="remove_question()" class="btn-close ">X</button>
+            </div>
+          </div>
+     `
+
+     $('.question-paper').append(template)
+     times++;
+    $('#no_of_question').val(times)
+}
+
+const remove_question = ()=>{
+    times -= 1
+    $('#no_of_question').val(times)
+    $('.question-paper').children().last().remove();
+   
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/js/chart2.js"></script>
+</html>

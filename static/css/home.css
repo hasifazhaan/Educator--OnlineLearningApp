@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+body{
+    scroll-behavior: smooth;
+}
+.Top-Content{
+    width: 100%;
+    background-image: url("/static/images/liquid-cheese.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 110vh;
+
+}
+.Username-style{
+    padding: 5%;
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 1000;
+    position: relative;
+    top:150px;
+}
+
+@keyframes example {
+    from{ left: 30%; }
+    to{left: 5%;}
+}
+@keyframes example2 {
+    from{ left:-30%; }
+    to{left: 0%;}
+}
+@keyframes example3 {
+    from{ left:130%; }
+    to{left: 79%;}
+}
+
+.sitting{
+    position: relative;
+    top:-55%;
+    height:75%;
+    width: 50%;
+    float: right;
+    left: 5%;
+    display: block;
+    animation-name: example;
+    animation-duration: 2s;
+    /*
+  animation-iteration-count: infinite; */
+
+}
+.misc{
+    position: relative;
+    top:-60%;
+    height:85%;
+    width: 50%;
+    float: right;
+    left: 79%;
+    display: block;
+    animation-name: example3;
+    animation-duration: 2s;
+}
+.Content-top{
+    font-size: 30px;
+    padding-left: 5%;
+    height: 450px;
+    width: 50%;
+    color:#025402;
+    font-weight: 600;
+    position: relative;
+    top:150px;
+    animation-name: example2;
+    animation-duration: 2s;
+}
+.Content-top p{
+    font-size: 25px;
+    font-family: 'Abel', sans-serif;
+    color:black;
+
+
+}
+.svg_image_top{
+    transform: scaleY(-1);
+    position: absolute;
+    z-index: -1;
+   
+}
+
+.second-top{
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    height: 215vh;
+}
+.learning{
+    padding: 5%;
+}
+.Contents{
+    position: relative;
+    top:10rem;
+    margin: 0;
+    /* background-color: #fafa; */
+}
+
+.card-container{
+    margin-top: 2%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+/* .card-container{
+    margin:1%; 
+    width: 100%;
+    display: grid;
+    grid-template-columns:  auto auto auto auto;
+    gap:2rem ;
+    height: 100%;
+    
+    
+} */
+.card{
+    height: 33rem;
+    width: 25rem;
+    overflow: hidden;
+    margin: 1px;
+}
+.card img{
+    height: 17rem;
+    width: 100%;
+    transition:all 2s;
+}
+
+
+.card img:hover{
+        transform: scale(1.2);
+        opacity: 0.8;
+}
+
+@media only screen and (max-width: 600px) {
+  .svg_image_top {
+      height: 30%;
+  }
+    .learning{
+        font-size:30px;
+        margin-top:70%;
+    }
+    .card-container{
+        margin-left:1%;
+        
+    }
+}

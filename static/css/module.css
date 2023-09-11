@@ -1,0 +1,132 @@
+body{
+  background-color: #3F3351;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  counter-reset: dropdown-item;
+}
+
+.navbar{
+  position: relative;
+  background-color:transparent;
+}
+.slogan{
+  color:gray
+}
+.nav-link{
+  color:#fff;
+  font-weight:200;
+}
+.nav-link:hover{
+  font-size: 25px;
+}
+
+.top-content {
+  background-color:#1F1D36;
+  height: 80vh;
+  width: 100%;
+  color: #fff;
+}
+.row{
+  height: 85%;
+}
+
+.heading h1 {
+  font-family: monospace;
+  padding: 1% 3%;
+}
+
+.description {
+  margin: 3%;
+  background-color: #3F3351;
+  padding: 3%;
+  width: 55%;
+  font-size: 20px;
+}
+.notes-details {
+  height: 55vh;
+  width: 50%;
+  padding: 1%;
+  margin-left: 4%;
+  border-radius: 15px;
+}
+.course-content{
+  padding:3%;
+}
+.drop-down{
+  overflow-y: scroll;
+  height: 500px;
+
+}
+.dropdown-menu .show{
+  color:#000;
+}
+.top-content .dropdown-item {
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+.dropdown-item:hover{
+  background-color: #864879;
+  cursor: pointer;
+}
+.dropdown-item::before{
+  counter-increment:dropdown-item;
+  content:counter(dropdown-item)"." ;
+}
+
+/* .course-content{
+    background-color:#3F3351;
+    padding:5%;
+    height: 800px;
+    overflow: scroll;
+} */
+
+hr{
+  background-color: gray;
+}
+
+.alert{
+  height: 300px;
+  width: 500px;
+  background-color: #9c6390;;
+  color:#fff;
+  position: absolute;
+  top: 100px;
+  left:70%;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  z-index: 1;
+}
+.close-btn{
+  position: absolute;
+  top: 60%;
+  background-color: transparent;
+  border: 1px solid rgba(0,0,150,0.5) ;
+  padding: 5px 20px;
+  border-radius: 5px;
+  transition: all 0.9s;
+}
+.close-btn:hover{
+  background-color: rgba(0,0,150,0.5);
+  color:#fff;
+}
+.cert{
+  position: relative;
+  margin-left:80%;
+  padding:0 5%;
+}
+
+/*
+
+aside{
+    position: absolute;
+    left: 99%;
+    top:30%;
+    transform: translate(-99%,-30%);
+    width: 40%;
+    background-color:#3F3351;
+    padding:5%;
+}
+ */

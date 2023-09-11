@@ -1,0 +1,23 @@
+.navbar{
+    background-color: rgb(36, 36, 53);
+    top:0;
+  }
+  .nav-link{
+    color: #fff;
+  }
+.Top-Content{
+      margin:10% 0;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.content h3{
+  font-size:40px;
+  color: green;
+}
+.content{
+  font-size:20px; 
+  
+}

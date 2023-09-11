@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title%}
+My Courses
+{% endblock %}
+
+{% block learning%}
+active
+{%endblock%}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/learning_page.css') }}">
+{% endblock %}
+
+{% block Bodyblock %}
+
+<div class="top-container">
+    <div>
+        <h1>
+            My Courses
+        </h1>
+        <div class="card-container row row-col-sm-6">
+            {%if courselist[0] != None%}
+            {%for i in courselist%}
+            {{i.id}}
+            <div class="card" data-aos="fade-up">
+              <img class="card-img-top" src="{{url_for('static', filename= 'images/courseimage/'+i.url) }}" alt="Image Not Found....">
+              <div class="card-body">
+                <h5 class="card-title">{{i.course_title}}</h5>
+                <p class="card-text">{{i.description}}</p>
+               <a href="{{ url_for('modules',course_id=i.id) }}"><button class="btn btn-outline-danger btn-lg btn-block"> Start Learning </button></a>
+               
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="no-course">
+                You dont have any courses.<br>
+                You can to search and purchase some courses<br>
+                <a href="{{url_for('course_page')}}"class="btn btn-primary">search</a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block javascript%}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+    duration:2000
+});
+window.addEventListener('load', AOS.refresh);
+</script>
+<script>
+
+</script>
+
+{% endblock %}

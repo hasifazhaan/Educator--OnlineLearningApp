@@ -1,0 +1,100 @@
+body{
+    background-color:  #3F0071;
+    color:#fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Top-Content{
+    position: relative;
+    margin: 10% 15%;
+    background-color: #150050;
+    padding: 5pc;
+}
+.navbar{
+    margin-top:-10%;
+    background-color:#202022;
+}
+.navbar .nav-link{
+    color:#EEEEEE;
+}
+.slogan{
+    color:#EEEEEE;
+}
+.row label{
+    font-size: 20px;
+    background-color:#610094;
+    padding: 5px;
+    margin-right:1%;
+    border-radius: 30px;
+}
+.details{
+    outline: none;
+    background-color: transparent;
+    border:0;
+    border-bottom: 1px solid black;
+    width: 65%;
+    padding: 5px;
+    font-size: 25px;
+    color:#fff;
+    transition: all 0.9s;
+}
+.col-lg{
+    padding: 30px;
+    
+}
+.user-image{
+    height:400px;
+    width: 100%;
+}
+.changepp{
+    position: absolute;
+    top:400px;
+    left: 77%;
+    background-color: #151D3B;
+    border:none;
+    color:#fff;
+    padding: 2%;
+    transition: all 0.9s;
+}
+.changepp:hover{
+    background-color: #D82148;
+    margin-top:1.5%;
+}
+.details:focus{
+    border-bottom-color: blue;
+    margin-top:2%;
+}
+.Passwords-change{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    background-color: #610094;
+    padding:5%;
+    transform:translate(-50%,-50%);
+    border-radius: 30px;
+    color:black;
+    display: none;
+}
+hr{
+    background-color: gray;
+}
+.Passwords-change h2{
+    text-align: center;
+    color:#fff;
+}
+
+.alert{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    background-color: #151D3B;
+    padding:5%;
+    transform:translate(-50%,-50%);
+    border-radius: 30px;
+}
+.alert >*{
+margin-top:10%;    
+}
+select{
+    display: none;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/signup_page.css') }}">
+    <title>EDUCATOR | Signup </title>
+</head>
+
+<body>
+    <nav>
+        <h1 class="Logo"> EDUCATOR</h1>
+        <span class="slogan">An Online Learning App</span>
+    </nav>
+    <form action="/savedata" method = "POST" >
+        <h1>
+            Few Things You Can Set Up Before Logging In ...
+        </h1>
+        <div>
+            <label>
+                Enter Your Phone No:
+            </label>
+            <input type="tel" class="inputs" name = "Phoneno" required="" minlength="10" maxlength="12">
+        </div>
+        <div>
+            <label>
+                Educational Qualification:
+            </label>
+            <select id="exampleFormControlSelect1" class="inputs" name="Qualification">
+                <option>Select</option>
+                <option>Doctorate Degree</option>
+                <option>Masters Degree</option>
+                <option>Bachelors Degree</option>
+                <option>Associate Degree</option>
+                <option>Others Degree Types</option>
+                <option>Schooling</option>
+              </select>
+        </div>
+        <div>
+            <label>
+                Interest In:
+            </label>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <ul class="ks-cboxtags">
+                    <li>
+                        <input type="checkbox" id="checkboxOne" value="Business" name="Interested" >
+                        <label  class ='checkbox' for="checkboxOne">Business</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkboxTwo" value="Finance" name="Interested">
+                        <label  class ='checkbox'  for="checkboxTwo">Finance</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox3" value="Programming" name="Interested">
+                        <label  class ='checkbox'  for="checkbox3">Programming</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox4" value="Web" name="Interested">
+                        <label  class ='checkbox'  for="checkbox4">Web</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox5" value="Python" name="Interested">
+                        <label  class ='checkbox'  for="checkbox5">Python</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox6" value="Music" name="Interested">
+                        <label  class ='checkbox'  for="checkbox6">Music</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox7" value="Graphics" name="Interested">
+                        <label  class ='checkbox'  for="checkbox7">Graphics</label>
+                    </li>
+                    <!-- <li>
+                        <input type="checkbox" id="checkbox8" value="" name="Interested">
+                        <label  class ='checkbox'  for="checkbox8">Physics</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox9" value="Biology" name="Interested">
+                        <label  class ='checkbox'  for="checkbox9">Biology</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox10" value="Health Care" name="Interested">
+                        <label  class ='checkbox'  for="checkbox10">Health Care</label>
+                    </li> -->
+                    
+
+                    
+                  </ul>
+                </div>
+            </div>
+
+        </div>
+            <input type="submit" class="btn btn-primary" value="Submit"  />
+    </form>
+    <form action="/Continue_" method = "POST">
+        <input type="submit"  class = "btn btn-secondary" value="Continue Without Saving" />
+
+    </form>
+
+
+</body>
+
+</html>

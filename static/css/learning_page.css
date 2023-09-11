@@ -1,0 +1,83 @@
+body{
+    background-color: rgba(0, 0, 15, 0.829);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.navbar{
+    position: relative;
+    background-color:transparent;
+}
+.slogan{
+    color:gray
+}
+.nav-link{
+    color:#fff;
+    font-weight:200;
+}
+.nav-link:hover{
+    font-size: 25px;
+}
+.active{
+    background-color:rgba(73, 2, 55, 0.459);;
+}
+
+.card-container{
+    margin:3%; 
+    width: 100%;
+    display: flex;
+    grid-template-columns:  auto auto auto;
+    justify-content: space-evenly;
+    align-items: center;
+    gap:4rem ;
+    height: 100%;  
+}
+.top-container{
+    height: 100%;
+}
+.top-container h1{
+    font-size: 55px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    background-color:  rgba(41, 18, 46,0.3);
+    margin:0px  3%;
+    color: #fff;
+    padding:2%;
+}
+.card-container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+}
+
+.card{
+    height: 33rem;
+    width: 25rem;
+    overflow: hidden;
+    margin: 1px;
+    background-color:rgba(0, 0, 15, 0.229);
+    color:#fff;
+    border:1px solid rgb(139, 139, 139);
+}
+.card img{
+    height: 17rem;
+    width: 100%;
+    transition:all 2s;
+}
+
+
+.card img:hover{
+        transform: scale(1.2);
+        opacity: 0.8;
+}
+
+a:hover{
+    text-decoration: none;
+}
+.no-course{
+    color: #fff;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}

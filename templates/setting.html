@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{%block cssblock%}
+<link rel ='stylesheet' href="{{url_for('static',filename = 'css/setting.css')}}">
+
+{% endblock %}
+
+
+{%block Bodyblock%}
+
+<div class="Top-Content">
+    <form action ='/changedetails' method="POST">
+        <div class="row">
+
+            {%if data[5] %}
+                <img src="{{data[5]}}"  class="user-image"/>
+            {% else %}
+                <img src="/static/users/default"  class="user-image"/>
+            {% endif %}
+            <button type="button" class="changepp" >Change Profile Picture</button>
+        </div>
+        <div class="row">
+
+            <div class="col-lg">
+                <label>
+                    Username:
+                </label>
+                <input type="text" name="name" class="details" value="{{data[0]}} " readonly>
+            </div>
+
+            <div class="col-lg">
+                <label>
+                    Phone Number:
+                </label>
+                <input type="text" name="phno" class="details"  value="{{data[2]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <label>
+                    Qualification:
+                </label>
+                <input type="text" name="qual" class="details value"  value="{{data[3]}}">
+                <select name="qual" class="details ">
+                    <option value="Doctorate Degree">Doctorate Degree</option>
+                    <option value="Masters Degree">Master's Degree</option>
+                    <option value="Bachelors Degree">Bachelor's Degree</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="Others Degree Types">Others Degree Types</option>
+                    <option value="Schooling">Schooling</option>
+                </select>
+                <button type="button" class="btn btn-secondary" id="degree">Change</button>
+                
+            </div>
+
+            <div class="col-lg">
+                <label>
+                    Your Interest:
+                </label>
+                <input type="text" name="interest" class="details" value="{{data[4]}}">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <label>
+                    Change Password:
+                </label>
+                <button type="button" class="btn btn-secondary" id="ShowPasswordOptions">Change</button>
+            </div>
+
+
+        </div>
+            
+        <div class="row">
+            <div class="col-lg">
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Save Changes"/>
+            </div>
+
+
+        </div>
+
+
+    </form>
+
+    <div class="Passwords-change">
+        <div class="row">
+            <div class="col-lg">
+               <h2>Change Password</h2> 
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg">
+                <label>
+                    Enter Old  Password:
+                </label>
+                <input type="password" id="oldp" class="details">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <label>
+                    Enter New  Password:
+                </label>
+                <input type="password" id="np" class="details">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <label>
+                    Re-enter New  Password:
+                </label>
+                <input type="password" id="rp" class="details">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id ="Changepassword">Change Password</button>
+            </div>
+        </div>
+    </div>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    
+        {% for category, message in messages %}
+        <div  class="alert">{{ message }} <br>
+            <button type="button"  class="btn btn-outline-danger" data-dismiss="alert" >
+              Okay
+            </button>
+        </div>
+
+        {% endfor %}
+    
+    {% endif %}
+    {% endwith %}
+
+</div>
+
+
+
+{% endblock %}
+
+{% block javascript%}
+<script>
+    $(document).ready(()=>{
+        let userimage = ""
+        let location = '/static/users/'
+
+
+        $('#ShowPasswordOptions').click(()=>{
+            $('.Passwords-change').fadeToggle()
+       })
+
+
+        $('.changepp').click(()=>{
+            
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = _ => {
+                // you can use this method to get file and perform respective operations
+                        let files =   Array.from(input.files);
+                        userimage = location+files[0].name
+                    
+                        $.ajax({
+                            type: "POST",
+                            url: "/setuserimage",
+                            data:JSON.stringify({"img":userimage}),
+                            contentType: "application/json",
+                            dataType: 'json',
+                            success: function(result) {
+                                // console.log(result)
+                                window.location.reload();
+                                // console.log("Doooo")
+                                
+                            } 
+                        });
+                    };
+            input.click();
+            
+        })
+
+        $("#Changepassword").click(()=>{
+            let oldpass=  '{{data[1]}}'
+            if ( oldpass == $('#oldp').val()){
+                if ( $('#np').val() == $('#rp').val() ){
+                    $.ajax({
+                            type: "POST",
+                            url: "/changepass",
+                            data:JSON.stringify({"password":$('#np').val()}),
+                            contentType: "application/json",
+                            dataType: 'json',
+                            success: function(result) {
+                                window.location.reload();
+                            } 
+                        })
+
+                }
+                else{
+                    alert("Password mismatch")
+                }
+            }
+            else{
+                alert("Old password is wrong!!!")
+            }
+        })
+
+        $('#degree').click(()=>{
+            $('select').show()
+            $('.value').removeAttr("name").hide();
+            
+        })
+    })
+
+</script>
+{% endblock %}

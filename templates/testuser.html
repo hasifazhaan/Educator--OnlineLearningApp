@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Learning
+{% endblock %}
+
+{% block learning%}
+active
+{%endblock%}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/test.css')}}" />
+
+{% endblock %}
+
+{% block Bodyblock %}
+
+<div class="top-content">
+  <div>
+    <h1> {{data[0][3]}}</h1>
+  </div>
+  <div>
+    <form action="/testevaluate" method="POST">
+      <div class="q-paper">
+        <input type="text"  value = '{{data|length}}' name="no_of_question" style="display: none;"/>
+        <input type="text"  value = '{{cid}}' name="cid" style="display: none;"/>
+        <input type="text"  value = '{{lid}}' name="lid" style="display: none;"/>
+       
+        {% for i in data%}
+          <span>
+            <h4 name="q{{i[2]}}">{{i[2]}}.{{i[4]}}</h4>
+          </span>
+
+          <div class="options">
+            {% set op = i[5].split(',')%}
+            <input type="radio" value ="0"name="o{{i[2]}}">{{op[0]}}<br>
+            <input type="radio"value ="1" name="o{{i[2]}}">{{op[1]}}<br>
+            <input type="radio" value ="2" name="o{{i[2]}}">{{op[2]}}<br>
+            <input type="radio"  value ="3"name="o{{i[2]}}">{{op[3]}}<br>
+            <input tye="text" value="{{i[6]}}" name="correctanswer" style="display: none;"/>
+            <input tye="text" value="{{i[7]}}" name="weight" style="display: none;"/>
+          </div>
+        {% endfor %}
+
+      
+
+        <input type="submit" class="btn btn-outline-dark btn-block" />
+      </div>
+
+    </form>
+    <div id="rules" class="rules">
+      <h4>General Guidelines </h4>
+      <hr>
+      <ul>
+        <li>This is the test portal which evaluates your performance</li>
+        <li>If you are a new user don't worry.The test only conduts exam to test your knowledge and provide better roadmap and customised learning to you</li>
+        <li>You can take test so that it improves your recommendation learning. </li>
+        <li>Please referain from any malpractice.Since this uses to provide a customised and best modules to you</li>
+        <li>The test conducted is in multiple choice questions</li>
+        <li>You can tick the choice which ever you think it seems to fit</li>
+        <li>Kindly do it with cauticious because once submitted it cannnot be undone and modules will be customised based on that result</li>
+        <li>Best of luck</li>
+      </ul>
+      <button id="close-me">OK</button>
+      
+    </div>
+
+
+  </div>
+
+  {% endblock %}
+  
+{% block javascript %}
+<script>
+  document.addEventListener("visibilitychange",function(){
+  if (document.visibilityState =="hidden"){
+      alert("We detected that you are switching tabs\nPlease do not switch while taking test. ")
+  }
+  });
+
+  $(document).ready(()=>{
+    $("#rules").show()
+    
+
+
+    $("#close-me").click(()=>{
+      $("#rules").addClass("rules").hide()
+    })
+  })
+  </script>
+{% endblock %}
+
+  <!--
+    .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  
+
+
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+    On mouse-over, add a grey background color
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  } -->

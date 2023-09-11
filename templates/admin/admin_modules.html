@@ -1,0 +1,41 @@
+<style>
+    .Course-options {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 5%;
+    }
+    .opt {
+        height: 15rem;
+        width: 29rem;
+        background-color: rgba(0,0,200,0.2);
+        color: #016d9c;
+        border: none;
+        transition: all 1.5s;
+    }
+    .opt:hover {
+        color:#ede5ce;
+        background-color: #016d9c;
+        border: 1px solid #016d9c;
+        position: relative;
+        left:5px;
+        top:5px;
+    }
+</style>
+
+
+<h3 class="heading"> Modules</h3>
+<div class="Course-options">
+    <button class="opt" id="AddModule" onclick="Modules_fcn('Add')">
+        <h4>
+            Add Module
+        </h4>
+    </button>
+    </a>
+    <button class="opt" id="DelModule" onclick="Modules_fcn('del')">
+        <h4>
+            Delete Module
+        </h4>
+    </button>
+</div>

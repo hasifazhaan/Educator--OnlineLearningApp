@@ -1,0 +1,47 @@
+<style>
+    .Course-options {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 5%;
+    }
+    .opt {
+        height: 15rem;
+        width: 29rem;
+        background-color: rgba(0,0,0,0.4);
+        color: #016d9c;
+        border: none;
+        transition: all 1.5s;
+    }
+    .opt:hover {
+        color:#ede5ce;
+        background-color: #016d9c;
+        border: 1px solid #016d9c;
+        position: relative;
+        left:5px;
+        top:5px;
+    }
+
+</style>
+
+
+<h3 class="heading"> Courses </h3>
+<div class="Course-options">
+    <button class="opt" onclick="course_fcn('add')">
+        <h4>
+            Add Course
+        </h4>
+    </button>
+    <button class="opt" onclick="course_fcn('update')" >
+        <h4>
+            Update Course
+        </h4>
+    </button>
+    <button class="opt"  onclick="course_fcn('del')">
+        <h4>
+            Delete Course
+        </h4>
+    </button>
+
+</div>

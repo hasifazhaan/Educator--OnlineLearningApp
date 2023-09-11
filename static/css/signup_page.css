@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Raleway:wght@100&display=swap');
+
+
+*{
+    color:#fff;
+}
+
+body{
+    background-color:#020016;
+    background-repeat:no-repeat;
+	background-size: cover;
+    height: 90vh;
+    color:#fff;
+}
+.Logo{
+	font-family: 'Mochiy Pop P One', sans-serif;
+	color: #ff0a0a;
+	font-size: 42px;
+	margin: 3rem;
+    margin-bottom: 0;
+}
+.slogan{
+	font-family: 'Mochiy Pop P One', sans-serif;
+	color:rgb(158, 158, 158);
+	margin: 4rem;
+
+}
+
+form {
+    position: relative;
+    text-align: center;
+    display: grid;
+    gap:70px;
+    font-size: 30px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+form h1{
+    color:#fff;
+}
+.inputs{
+    background-color: transparent;
+    border:none;
+    border-bottom: 1px solid #fff;
+    width:70%;
+    color:#fff;
+}
+
+.checkbox{
+    font-size: 20px;
+}
+
+.btn{
+    width:50%;
+    margin: auto;
+    font-family:initial
+    
+}
+@media only screen and (max-width: 900px) {
+form{
+    width: 100%;
+    height: 100%;
+}
+    .btn{
+        width: 100%;
+    }
+    .btn-secondary{
+        position: relative;
+        top:40%
+    }
+  }

@@ -1,0 +1,100 @@
+{% extends 'base.html'%}
+
+{% block title%}
+HomePage
+{% endblock %}
+
+{% block home%}
+active
+{%endblock%}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css') }}">
+<!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+{% endblock %}
+
+{% block Bodyblock%}
+<div class="Home-Content">
+  <div class="Top-Content">
+    <h1 class="Username-style">
+      Welcome {{session['username'].split('@').0 }}
+    </h1>
+    <div class="Content-top">
+      A Best Place For Online And Customized Studies.
+      <p>
+        Personalized learning is a teaching model based on that premise.
+        Each student gets a “learning plan” based on how they learn, what they know,
+        and what their skills and interests are. It’s the opposite of the “one size fits all”
+        approach used in most schools.
+
+        Students work with their teachers to set both short-term and long-term goals.
+        This process helps students take ownership of their learning.
+      </p>
+
+    </div>
+    <img src="/static/images/sitting.png" class="sitting" />
+    <img src="/static/images/miscellaneous.png" class="misc" />
+  </div>
+
+  <div class="second-top">
+    <img src="/static/images/SVG1.svg" class="svg_image_top" />
+    <h1 class="learning">
+      Let's Start With Your Learning ....
+    </h1>
+    <div class="Contents">
+      <div class=" row row-col-sm-6 card-container">
+          {%for i in courselist%}
+          <div class="card" data-aos="fade-up">
+            <img class="card-img-top" src="{{url_for('static', filename= 'images/courseimage/'+i.url) }}"
+              alt="Image Not Found....">
+            <div class="card-body">
+              <h5 class="card-title">{{i.course_title}}</h5>
+              <p class="card-text">{{i.description}}</p>
+
+              {% if i.registered %}
+              <a href="{{ url_for('modules',course_id=i.id,subject=i.course_title) }}"><button class="btn btn-outline-danger btn-lg btn-block"> Start Learning
+                </button></a>
+
+              {%else%}
+              <a href="{{url_for('payment_course',course_id = i.id)}}"> <button class="btn btn-outline-success"> Buy @
+                  RS {{i.price}} </button></a>
+              or
+
+              <button class="btn btn-outline-danger"> Add to Wishlist </button>
+
+              {% endif %}
+
+            </div>
+          </div>
+          {%endfor%}
+
+
+        <!-- <div class="card">
+          <img class="card-img-top" src="/static/images/top.jpg">
+          <div class="card-body">
+            <h5 class="card-title">Power Of Books</h5>
+            <p class="card-text">Thanks for the answer! This one worked best for me, since the others either flipped all the children too or required a more complex trick to reverse the flip</p>
+            <button class="btn btn-outline-success"> Buy @ RS 153 </button> 
+            or 
+            <button class="btn btn-outline-danger"> Add to Wishlist </button>
+          </div>
+        </div> -->
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascript%}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="/static/js/main.js"></script>
+<script>
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+body{
+    background-color: rgba(0, 0, 15, 0.829);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.navbar{
+    position: relative;
+    background-color:transparent;
+}
+.slogan{
+    color:gray
+}
+.nav-link{
+    color:#fff;
+    font-weight:200;
+}
+.nav-link:hover{
+    font-size: 25px;
+}
+.active{
+    background-color:rgba(73, 2, 55, 0.459);;
+}
+.content-area{
+    position: relative;
+    height: 100vh;
+    background-image: url("/static/images/sun-tornado.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 98%;
+    margin:1%;
+    background-size: cover;
+    padding :30px;
+
+    overflow-x:hidden; 
+    display: grid;
+}
+.header{
+    font-size: 70px;
+    font-family: 'Rowdies', cursive;
+    color:#fff;
+}
+.options{
+     display: grid;
+    place-content: center;
+    
+}
+.form input[type='text']{
+    border: 2px solid #000;
+    width: 100%;
+    border-radius: 40px;
+    height: 80px;
+    background-color:  transparent;
+    color:#000;
+    font-size: 60px;
+    padding: 30px;
+
+}
+.form input[type='submit']{
+    border: 2px solid #000;
+    width: 50%;
+    height: 80px;
+    border-radius: 10px;
+    background-color:black;
+    color:#fff;
+    font-size: 30px;
+    margin: 30px  25%;
+
+}
+
+
+
+.cards{
+    margin:1%; 
+    width: 100%;
+    display: grid;
+    grid-template-columns:  auto auto auto auto;
+    gap:2rem ;
+    
+    
+}
+.card{
+    height: 33rem;
+    width: 25rem;
+    overflow: hidden;
+    margin: 1px;
+}
+.card img{
+    height: 17rem;
+    width: 100%;
+    transition:all 2s;
+}
+
+
+.card img:hover{
+        transform: scale(1.2);
+        opacity: 0.8;
+}
+.not-present{
+    position: relative;
+    color: #fff;
+    font-family: 'Merriweather', serif;
+    margin-left: 30%;
+    font-size: 50px;
+    
+}
+.heading-cards{
+    padding: 30px;
+    margin-top: 5%;
+    color: #fff;
+    width: 100%;  
+}
+.heading-cards h1{
+    font-size: 50px;
+    padding-left:40%; 
+}
+/* .form{
+    position: relative;
+    margin:20% 0 0 20%;
+    font-family: 'Rowdies', cursive;
+    color:#fff;
+} */

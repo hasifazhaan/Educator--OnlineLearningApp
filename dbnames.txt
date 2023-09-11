@@ -1,0 +1,9 @@
+userlogin -username,pasword,image_url,phoneno,qual,interest
+timeslogin-username,cdate,times,
+payment_cards-'username']}','{cardholder}','{cardno}','{expire}','{cvv}',{bal}
+student_course {session['username']}','{course_id}',completed,current_level,cert_id
+course_list_1- course_index Ascending 1 	course_title 	price 	num_reviews 	level 	content_duration 	subject 	year 	image_url 	
+modules {course_id}','{lecture_id}',level,content,video
+student_learning_history-username,course_id,completed,lecture_id
+testquestion-course_id,lecture_id,question_id,question,answer,weight,option
+admin_login-username,password

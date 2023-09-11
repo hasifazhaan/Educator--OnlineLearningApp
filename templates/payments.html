@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block cssblock %}
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/payment_page.css')}}" />
+<style>
+    .Top-Content{
+    position: relative;
+    margin: 10% 15%;
+}
+.Top-Content h1{
+    color: #fff;
+    background-color: rgba(255,255,255,0.3);
+}
+</style>
+
+{% endblock %}
+
+
+{%block Bodyblock %}
+
+<div class="Top-Content">
+    <div>
+        <h1>My Cards</h1>
+    </div>
+    <div>
+        <div class="payment-cards">
+            {% if cards%}
+                {% for i in cards%}
+                <div class="card">
+
+                    <div class="card__front card__part">
+                        <img class="card__front-square card__square" src="/static/images/chip.png">
+                        <img class="card__front-logo card__logo" src="/static/images/visa_logo.png">
+                        <p class="card_numer">{{i[2]}}</p>
+                        <div class="card__space-75">
+                            <span class="card__label">Card holder</span>
+                            <p class="card__info"> {{i[1]}}</p>
+                        </div>
+                        <div class="card__space-25">
+                            <span class="card__label">Expires</span>
+                            <p class="card__info">{{i[3]}}</p>
+                        </div>
+                        </div>
+
+                    <div class="card__back card__part">
+                        <div class="card__black-line"></div>
+                        <div class="card__back-content">
+                            <div class="card__secret">
+                                <p class="card__secret--last"><input type="password" class="cvv"
+                                        name='cvv_userside' value="abc" />
+                                </p>
+                            </div>
+                            <img class="card__back-square card__square" src="/static/images/chip.png">
+                            <img class="card__back-logo card__logo" src="/static/images/visa_logo.png">
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                {% endfor%}
+            {% endif %}
+
+
+            <div class="add-new">
+                <a href="{{ url_for( 'addcard') }}"><button type="button"
+                        class="Symbol">+</button></a>
+                Add new cards
+            </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Learning
+{% endblock %}
+
+{% block learning%}
+active
+{%endblock%}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/test.css')}}" />
+<style>
+    .content{
+  position: relative;
+  margin-left: 20%;
+}
+h3{
+  font-size: 50px;
+}
+.content {
+  font-size: 25px;
+  padding:53px;
+  width: 50%;
+  background-color: rgba(0,0,0,0.2);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+.Pass {
+  color:rgb(110, 245, 110);
+}
+.Failed{
+  color:rgb(236, 100, 100);
+}
+hr{
+    background-color: gray;
+}
+</style>
+
+{% endblock %}
+
+{% block Bodyblock %}
+
+<div class="top-content">
+  <div class="heading">
+      <h3>Results:</h3>
+  </div>
+  <div class="content">
+    <div>
+        Obtained Marks:{{data[1]}}
+        <br>
+        Total Marks: {{data[0]}}
+    </div>
+    <div class="{{data[2]}}">
+        Summary: {{data[2]}}
+       
+    </div>
+    <hr>
+
+    {% if data[2] == 'Pass'%}
+        <div class="user-pass">
+            YaY!, We Knew You Could Do this.<br>
+            In order to proceed further, either you can skip few modules to speed up your process or you can learn from the scrach . <br>
+            Level:{{data[3]}}<br>
+            <a class="btn btn-success" href="{{ url_for('setlevel',level = data[3], course_id =data[4],lecture_id = data[5] ) }}">Continue With Skipping Few Modules </a>
+            <a class="btn btn-secondary" href="{{ url_for('setlevel',level = 0, course_id =data[4],lecture_id = data[5] ) }}">Continue Without Skipping</a>
+        </div>
+    {% else %}
+        <div class="user-failed">
+            Oh No!,But do not worry when Educator is here .<br>
+            In order to proceed further, You Can Learn From Scrach Again And Do the Test <br>
+            <a class="btn btn-secondary" href="{{ url_for('setlevel',level = data[3], course_id =data[4],lecture_id = data[5] ) }}">Go Back And Learn </a>
+        </div>
+    {% endif %}
+  </div>
+
+</div>
+
+  {% endblock %}
+  
+
+
+  <!--
+    .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  
+
+
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+    On mouse-over, add a grey background color
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  } -->

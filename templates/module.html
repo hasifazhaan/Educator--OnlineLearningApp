@@ -1,0 +1,336 @@
+{% extends 'base.html'%}
+
+{% block title%}
+Learning
+{% endblock %}
+{% block learning%}
+active
+{%endblock%}
+{% block cssblock%}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/module.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+
+{% block Bodyblock %}
+<div class="top-content">
+  {%if data%}
+
+  <section>
+    <div class="heading ">
+      <h1 class="row">
+        {{subjectname}}
+      </h1>
+      <div class="cert" >
+        {% for i in data%}  
+          {% if i[2] == 'Finaltest' %}
+          {% if i[7] != 0 %}
+            <button class="btn btn-lg btn-primary" onclick="show('{{i[0]}}')">View Certificate</button>
+          {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row ">
+
+      <div class="col-lg description">
+        description
+        <div class="row">
+          <div class="notes-details col-lg">
+            <video width="100%" height="100%" controls id="myVideo" src="/static/course_content/educator-front.mp4" type="video/mp4" >
+              <!-- <source src="/static/course_content/python-intro/intro.mp4" type="video/mp4" class="sourcevideo">
+              <source src="/static/course_content/python-intro/intro.mp4" type="video/ogg" class="sourcevideo"> -->
+              <!-- <source src="{{url_for('static',filename='course_content/python-intro/intro.mp4')}}" type="video/mp4" >
+              <source src="{{url_for('static',filename='course_content/python-intro/intro.mp4')}}" type="video/webm"> -->
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        
+            {% for category, message in messages %}
+            <div  class="alert">{{ message }} <br>
+                <button type="button"  class="close-btn" data-dismiss="alert" >
+                  Okay
+                </button>
+            </div>
+
+            {% endfor %}
+        
+        {% endif %}
+        {% endwith %}
+
+
+      </div>
+      <div class=" course-content col-lg">
+        <h1>
+          Modules
+        </h1>
+        <hr>
+
+        <div class="drop-down ">
+          {% set count = namespace(value=0) %}
+          {% for i in data%}  
+            {% if i[2] == 'test' or i[2] == 'Finaltest' %}
+              {% if i[7] == 1  %}
+                <a class="dropdown-item"  href="{{url_for('test',testname=i[3],c_id=i[0],l_id=i[1])}}">{{i[3]}} <i class="fa fa-check" style="font-size:24px;  color: rgb(80, 245, 80);"></i></a>
+              {%else%}
+                <a class="dropdown-item"  href="{{url_for('test',testname=i[3],c_id=i[0],l_id=i[1])}}">{{i[3]}} <i class="fa fa-edit" style="font-size:24px"></i></a>
+              {% endif %}
+
+            {%else%}
+              {% if i[7] == 0 %}
+                <a class="dropdown-item"  onclick="checkifplay('{{i[5]}}', '{{i[0]}}', '{{i[1]}}',' {{ count.value }}' )">{{i[3]}}    <i class="fa fa-lock" style="font-size:24px;color: rgb(245, 80, 80);"></i> </a>
+                {% set count.value = count.value + 1 %}
+           
+              {%else%}
+                <a class="dropdown-item"  onclick="playvideo('{{i[5]}}','{{i[0]}}', '{{i[1]}}' )">{{i[3]}}    <i class="fa fa-check" style="font-size:24px; color: rgb(80, 245, 80);"></i> </a>
+              {% endif %}
+             
+
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        <!-- <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+            Section 1
+          </button>
+         
+          <div class="drop-down btn btn-block">
+            {% for i in s1%}
+            <a class="dropdown-item" onclick="playvideo('{{i[5]}}')">{{i[3]}}</a>
+            {% endfor %}
+          </div>
+        
+        </div>
+        {% if s2%}
+        
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+            Section 2
+          </button>
+          
+          
+         
+          <div class="drop-down btn btn-block">
+            {% for i in s2%}
+            <a class="dropdown-item" onclick="playvideo('{{i[5]}}')">{{i[3]}}</a>
+            {% endfor %}
+          </div>
+        
+        </div>
+        {% endif %}
+        {% if s3%}
+         
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+            Section 3
+          </button>
+         
+          <div class="drop-down btn btn-block">
+            {% for i in s3%}
+            <a class="dropdown-item" onclick="playvideo('{{i[5]}}')">{{i[3]}}</a>
+            {% endfor %}
+          </div>
+        
+        </div> -->
+        {% endif %}
+
+       
+        <!-- <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+            Introduction
+          </button>
+          <div class="drop-down btn btn-block">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+            Topic 2
+          </button>
+          <div class="drop-down btn btn-block">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+            Topic 3
+          </button>
+          <div class="drop-down btn btn-block">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+
+
+
+
+
+  </section>
+  {%else%}
+  <section>
+    An Error Occured Try Again Later...
+  </section>
+
+  {% endif %}
+
+
+<script>
+  function playvideo(url,course_id,lecture_id){
+    var location = "/"
+    $('#myVideo').attr('src',location+url)
+
+    var vid = document.getElementById("myVideo"); 
+    vid.play(); 
+
+    $.ajax({
+            type: "POST",
+            url: "/readlecture",
+            data:JSON.stringify({"course_id":course_id,"lecture_id":lecture_id,"level":'{{level}}'}),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result) {
+                // Location.reload()
+                alert(lecture_id)
+            } 
+        });
+
+}
+
+
+function checkifplay(url,course_id,lecture_id,val){
+  if (val ==0){
+    playvideo(url,course_id,lecture_id)
+  }
+  else{
+    alert("Please complete previous modules before accessing this.")
+  }
+  // alert($('.drop-down').find("#Notmake").length)
+
+}
+
+function show(cid){
+  $.ajax({
+            type: "POST",
+            url: "/getcert_id",
+            data:JSON.stringify({"c_id":cid}),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(result) {
+                // Location.reload()
+                let id  = result['id']
+                window.location.href = "/viewcertificate/"+id
+            } 
+        });
+}
+
+
+$("#myVideo").bind("ended", function() {
+   location.reload()
+});
+</script>
+
+
+
+
+
+
+  <!-- <div class="course-content">
+            <h1>
+                Modules
+            </h1>
+            <hr>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+                  Topic 1
+                </button>
+                <div class="drop-down btn btn-block" >
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+                  Topic 1
+                </button>
+                <div class="drop-down btn btn-block" >
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-lg btn-block ">
+                  Topic 1
+                </button>
+                <div class="drop-down btn btn-block" >
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div> -->
+
+
+  <!-- <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action module-topic"> 
+                    <div class="display-content">
+                        <span >Topic 1 </span><span>+</span>
+                    </div>
+                    <div class="module">
+                        <li>Module 1</li>
+                        <li>Module 2</li>
+                        <li>Module 3</li>
+                        <li>Module 4</li>
+                        <li>Module 5</li>
+                    </div>
+                    
+
+                </a>
+                <a href="#" class="list-group-item list-group-item-action module-topic"> Topic 2</a>
+                <a href="#" class="list-group-item list-group-item-action module-topic">Topic 3</a>
+                <a href="#" class="list-group-item list-group-item-action module-topic">Topic 4</a>
+                <a href="#" class="list-group-item list-group-item-action module-topic">Topic 5</a>
+              </div> -->
+  <!-- <div>
+                section1
+            </div>
+            <div>
+                section2
+            </div>
+            <div>
+                section3
+            </div>
+            <div>
+                section4
+            </div>
+            <div>
+                section5
+            </div> -->
+
+
+
+
+
+</div>
+{% endblock %}
+{% block javascript%}
+<script src="/static/js/modules.js"></script>
+{% endblock %}

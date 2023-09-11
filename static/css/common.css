@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Raleway:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&display=swap");
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+.Logo {
+  font-family: "Mochiy Pop P One", sans-serif;
+  color: #ff0a0a;
+  font-size: 42px;
+  margin-bottom: 0;
+}
+.slogan {
+  font-family: "Mochiy Pop P One", sans-serif;
+  color:#187a02;
+  margin: 2rem;
+}
+.navbar {
+  font-size: 20px;
+  font-family: "IBM Plex Sans Thai Looped", sans-serif;
+  position: fixed;
+  margin: 0  auto;
+  background-color: transparent;
+  z-index: 1;
+  color:#fff;
+  display: flex;
+  align-content: center;
+  width: 100%;
+}
+.navbar-collapse{
+  float: right;
+  margin-left:45%; 
+  
+}
+
+.nav-link{
+  color:#000;
+  font-size: 25px;
+  font-weight: 800;
+  transition: all ease-in 0.2s;
+}
+.nav-link:hover{
+  color: gray;
+  font-size:30px;
+}
+
+.active{
+  background-color: rgba(34,67,5,0.4);
+  border-radius: 30px
+}
+
+/* 
+Alternate Navbar
+*/
+
+.navbar1{
+  position: relative;
+  background-color: #353634;
+}
+.slogan1{
+  color: gray;
+}
+.nav-link1{
+  color:#fff;
+}
+.active1{
+  background-color: rgba(250, 0, 0,0.6);
+}
+
+
+
+.nav-image{
+  height: 40px;
+  width: 40px;
+  border-radius:50% ;
+  border:1px solid  #000;
+  background-color: #fff;
+}
+
+.d-flex{
+  width: 61rem;
+  overflow: hidden;
+}
+.me-2{
+  width: 100%;
+  border-radius: 30px;
+  margin-right: 30px;
+  color:#fff;
+}
+.me-2:focus{
+  color: #fff;
+}
+.dropdown-menu{
+  left: -6rem;
+}
+a:hover{
+  text-decoration: none;
+}
+footer{
+  position: relative;
+  top:3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-item {
+   left:0;
+  }
+}

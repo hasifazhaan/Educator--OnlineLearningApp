@@ -1,0 +1,171 @@
+{% extends 'base.html'%}
+
+{% block title%}
+Payment
+{% endblock %}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/payment_page.css')}}" />
+
+{% endblock %}
+
+{% block Bodyblock %}
+
+<div class="payment_container">
+    <div class="heading">
+        <h1>
+            Checkout
+        </h1>
+        <div class="payment_details">
+            <div class="user_details">
+                <h3>
+                    Purchased By.
+                    <hr>
+                    <br>
+                    {{session['username']}}
+                </h3>
+                <div>
+                    Details
+                </div>
+            </div>
+
+            <div class="product_details">
+                <div>
+                    <h4>
+                        Order Summary
+                    </h4>
+                    <hr>
+
+                    <div class="card1">
+                        <img class="card1-img-top" src="{{url_for('static', filename= 'images/courseimage/'+i.url) }}"
+                            alt="Image Not Found....">
+
+                        <div class="card1-body">
+                            <h5 class="card1-title">{{i.course_title}}</h5>
+                            <p class="card1-text">{{i.description}}</p>
+                            <div class="price">
+                                Price: ₹{{i.price}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {%set t = i.price | int %}
+            {% set tax = (t*10) /100 %}
+            <form action="/purchase/{{i.id}}" method="POST">
+
+
+                <div class="payment">
+                    <h3>
+                        Payment
+                    </h3>
+                    <hr>
+
+                    <div class="payment-cards">
+                        {% if cards%}
+                            {% for i in cards%}
+                            <input type="radio" name="radio_btn" value="{{i}}" />
+                            <div class="card">
+
+                                <div class="card__front card__part">
+                                    <img class="card__front-square card__square" src="/static/images/chip.png">
+                                    <img class="card__front-logo card__logo" src="/static/images/visa_logo.png">
+                                    <p class="card_numer">{{i.no}}</p>
+                                    <div class="card__space-75">
+                                        <span class="card__label">Card holder</span>
+                                        <p class="card__info"> {{i.name}}</p>
+                                    </div>
+                                    <div class="card__space-25">
+                                        <span class="card__label">Expires</span>
+                                        <p class="card__info">{{i.expire}}</p>
+                                    </div>
+                                    </div>
+
+                                <div class="card__back card__part">
+                                    <div class="card__black-line"></div>
+                                    <div class="card__back-content">
+                                        <div class="card__secret">
+                                            <p class="card__secret--last"><input type="password" class="cvv"
+                                                    name='cvv_userside'  />
+                                            </p>
+                                        </div>
+                                        <img class="card__back-square card__square" src="/static/images/chip.png">
+                                        <img class="card__back-logo card__logo" src="/static/images/visa_logo.png">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            {% endfor%}
+                        {% endif %}
+
+
+                        <div class="add-new">
+                            <a href="{{ url_for( 'addcard',course_id = i.id ) }}"><button type="button"
+                                    class="Symbol">+</button></a>
+                            Add new cards
+                        </div>
+
+                    </div>
+
+                </div>
+            <div>
+                <input type="hidden" value="{{t}}" name="price"/>
+                <input type="submit" class="btn btn-success btn-lg btn-block" value="Pay Now">
+            </div>
+        </form>
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            
+                {% for category, message in messages %}
+                <div  class="alert alert-warning" role="alert">{{ message }}</div>
+                {% endfor %}
+            
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        </div>
+        <div class="bill">
+            <div>
+                <h3>
+                    Order Details
+                </h3>
+                <hr>
+            </div>
+            <div class="details">
+
+                
+
+
+                <p>Price</p>
+                <b>
+                    <p> ₹{{i.price}}</p>
+                </b>
+
+                <p>Service Tax 10%</p>
+                <p>₹{{tax}}</p>
+
+                <h5>Sub-Total</h5>
+                <h5> ₹{{t + tax}}</h5>
+
+                <p> Discount</p>
+                <p>₹{{tax}}</p>
+                <h2 class="alert alert-success" role="alert">Total</h3>
+                    <h2 class="alert alert-success" role="alert">₹{{i.price}}</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

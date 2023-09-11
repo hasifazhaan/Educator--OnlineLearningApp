@@ -1,0 +1,97 @@
+{% extends 'base.html'%}
+
+{% block cssblock%}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel='stylesheet' href="{{url_for('static',filename = 'css/analize.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+{% endblock %}
+
+{% block Bodyblock%}
+<div class="Top-content">
+    <h1> <i class="fa fa-pie-chart" style="font-size:40px"></i> Insights </h1>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class=" chart ">
+                    <h5>User Up time</h5>
+                    <canvas id="userlogin"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="box">
+                    <label id="purchased_values"> <i class='fas fa-book-open' style='font-size:36px'></i> <br>  Total Courses Purchased</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="chart">
+                    <h5>Purchased Course </h5>
+                    <canvas id="purchased"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="chart">
+                    <h5 style="background-color: rgb(23, 0, 34);">Course Complete View</h5>
+                </div>
+            </div>
+        </div>
+        <div id="overview">
+
+        </div>
+        
+        <!-- <div class="row">
+            <div class="col">
+                <div class="chart" id="overview" >
+                    <h5>Course Complete View</h5>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+<script src="/static/js/chart1.js"></script>
+
+<script>
+
+
+    // const myChart1 = new Chart(
+    //     document.getElementById('userlogin'),
+    //     config
+    // );
+
+    // const myChart2 = new Chart(
+    //     document.getElementById('addedcourse'),
+    //     config2
+    // );
+
+    // const myChart3 = new Chart(
+    //     document.getElementById('viewtime'),
+    //     config3
+    // );
+    // const myChart4 = new Chart(
+    //     document.getElementById('moreinfo'),
+    //     config4
+    // );
+    // const myChart5 = new Chart(
+    //     document.getElementById('somemore'),
+    //     config5
+    // );
+
+</script>
+{% endblock %}

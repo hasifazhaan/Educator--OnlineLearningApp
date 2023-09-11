@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block cssblock%}
+
+
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/finalcomplete.css')}}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block Bodyblock%}
+<div class="Top-Content">
+    <div class="content">
+        <h3>
+            Yoohoo!!!!
+        </h3>
+        <hr>
+        Congrats You Have Completed the Course . <br>
+        You Can See The Certificate given below <br>
+       <a href="{{url_for('viewcertificate',id = id)}}"><button class="btn btn-primary btn-lg">Certificate</button> </a>
+    </div>
+</div>
+{% endblock %}

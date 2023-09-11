@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block cssblock%}
+<link rel="stylesheet" href="{{url_for('static',filename = 'css/certificate.css')}}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block Bodyblock%}
+<div class="Top-Content">
+
+    <div class="certificate">
+
+        <div class="by">
+            <h1 class="Logo"> EDUCATOR</h1>
+            <span class="slogan">An Online Learning App</span>
+          </a>
+        </div>
+
+        <div class="badge">
+            <img src="/static/others/badge.png" class="badgeimage" />
+        </div>
+
+        <div class="heading"> <h2>certificate of completion</h2></div>
+
+        <div class="main-content">
+            <p>
+                This is to certify that  
+            </p>
+            <label>{{data['name']}}</label>
+            <p>
+              has complete and gained knowledge in the  <h3>"{{data['coursename']}}"</h3>
+            </p>
+        </div>
+        <div class="signature">
+            <img src="/static/others/stamp.png" class="stamp"/>
+            <div>
+                Educator
+            </div>
+            <br>
+            <br>
+            <div>
+                Certificate ID:<span>{{data['cert_id']}}</span>
+            </div>
+        </div>
+
+
+    </div>
+    
+    
+
+</div>
+  
+
+{% endblock %}

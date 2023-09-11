@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <link rel = "shortcut icon" href="/static/images/favicon.ico"/> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/common.css') }}">
+
+
+  {% block cssblock%}
+  {% endblock %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Educator |
+    {% block title%}
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg "> <!--navbar-dark bg-dark-->
+      <a class="navbar-brand" href="#">
+        <h1 class="Logo"> EDUCATOR</h1>
+        <span class="slogan">An Online Learning App</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item {% block home%} {%endblock%}">
+            <a class="nav-link" id="home" href="{{url_for('homepage')}}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item {% block search%} {%endblock%}">
+            <a class="nav-link" id="search" href="{{url_for('course_page')}}">Search Cources</a>
+          </li>
+          <li class="nav-item {% block learning%} {%endblock%}">
+            <a class="nav-link" id="learning" href="{{url_for('learning_page')}}" href="#">My Learning</a>
+          </li>
+          <li class="nav-item {% block about%} {%endblock%}">
+            <a class="nav-link" id="about" href="{{url_for('analize')}}">Insight</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="{{session['image']}}" alt="Name" class="nav-image">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">{{session['username']}}</a>
+              <a class="dropdown-item" href="{{url_for('learning_page')}}">My Course</a>
+              <a class="dropdown-item" href="{{url_for('payments')}}">Payment Options</a>
+              <a class="dropdown-item" href="{{ url_for('settings')}}">Settings</a>
+              <a class="dropdown-item" href="{{ url_for('analize')}}">Insights</a>
+              <a class="dropdown-item" href="{{url_for('logout')}}">Logout</a>
+
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="body-block">
+    {% block Bodyblock%}
+    {% endblock %}
+
+  </section>
+
+
+  <footer class="bg-dark text-light text-center text-md-left">
+    <div class="container">
+      <div class="row pt-4">
+        <div class="col-sm-6 col-md-3 pb-4">
+          <h4 class="mb-4">
+            Services
+          </h4>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="text-light">What to Learn</a>
+            </li>
+            <li>
+              <a href="#" class="text-light">How does recommendation works</a>
+            </li>
+            <li>
+              <a href="#" class="text-light">what is the benefit of this app</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-md-3 pb-4">
+          <h4 class="mb-4">
+            Learning
+          </h4>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="text-light">What Courses Are Available</a>
+            </li>
+            <li>
+              <a href="#" class="text-light">Make Fully use of this app</a>
+            </li>
+            <li>
+              <a href="#" class="text-light">More</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 pb-4">
+          <h4 class="mb-4">
+            Contact
+          </h4>
+          <ul class="list-unstyled">
+            <li>
+              <a href="mailto:hasif45azhaan@gmail.com"
+                class="text-light">Admin@Educator.com</a>
+            </li>
+            <li>
+              <a href="tel:6360241530" class="text-light"> 6360241530</a>
+            </li>
+            <li>
+            <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="haseef-azhaan-59a5a0200" data-version="v1">
+              <a class="badge-base__link LI-simple-link text-light" href="https://in.linkedin.com/in/haseef-azhaan-59a5a0200?trk=profile-badge">Haseef Azhaan</a></div>
+            </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center mb-4">
+        <a href="#" class="d-block px-3"><img
+            src="https://cdnjs.cloudflare.com/ajax/libs/webicons/2.0.0/webicons/webicon-facebook-m.png"
+            alt="Facebook" /></a><a href="#" class="d-block px-3"><img
+            src="https://cdnjs.cloudflare.com/ajax/libs/webicons/2.0.0/webicons/webicon-twitter-m.png"
+            alt="Twitter" /></a><a href="#" class="d-block px-3"><img
+            src="https://cdnjs.cloudflare.com/ajax/libs/webicons/2.0.0/webicons/webicon-instagram-m.png"
+            alt="Instagram" /></a><a href="#" class="d-block px-3"><img
+            src="https://cdnjs.cloudflare.com/ajax/libs/webicons/2.0.0/webicons/webicon-linkedin-m.png"
+            alt="Linkedin" /></a>
+      </div>
+      <p class="text-center text-secondary border-top border-secondary py-4">
+        Educator © 2022 (Haseef Azhaan)
+      </p>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"
+    integrity="sha512-O+atZ/gABlcFlpIoLQR04f72qHqZWKwTVsQZHqk/8VE2nrzDlnqhXbnXP7Gh/TyhpPT8tEUm5A580GG8AloHTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.js"
+    integrity="sha512-taAlvhWZIECTFZJ737SnQ72tMubJPT2M3OA2rSPPpx3W47Uef1lxVhAj87MNqmm5YdwndG1h8siC4332C0jQPA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"
+    integrity="sha512-7nSmgdAZ7oPdT5aa2a4YauI8Y1xgaj6zZtQo9+EIEhpcNEiRHPAtyTKYckBQ0lmg1xQKrdWweHBcN/D0tdnvCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ 
+  {% block javascript%}
+
+  {% endblock %}
+
+
+</body>
+Miglisoft
+</html>

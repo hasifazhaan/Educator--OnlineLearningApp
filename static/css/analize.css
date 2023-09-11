@@ -1,0 +1,43 @@
+body{
+  background-color: rgba(0, 0, 15);
+}
+.navbar{
+  background-color: rgb(36, 36, 53);
+  top:0;
+}
+.nav-link{
+  color: #fff;
+}
+.Top-content{
+    margin:10% 0;
+    color: #fff;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.Top-content h1{
+  background-color: rgb(35, 35, 58);
+  padding:2%;
+  margin:2%
+}
+
+.chart{
+  position: relative;
+}
+.chart h5{
+color:gray;
+text-align: center;
+background-color: rgba(0,0,50,0.5);
+padding: 3%;
+margin: 5% 12%;
+}
+
+.box{
+height: 400px;
+width: 400px;
+background-color: rgb(15, 15, 36);
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 30px;
+margin-top: 10%;
+}

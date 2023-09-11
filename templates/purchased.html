@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block cssblock%}
+<style>
+
+.navbar{
+    position: absolute;
+    top:0px;
+    background-color: rgb(52, 36, 66);
+}
+.nav-link{
+    color: #fff;
+}
+.content div{
+    font-size: 35px;
+}
+.content{
+    position: relative;
+    margin: 15% 0;
+    left: 45%;
+    width: 300px;
+}
+.btn{
+    position: relative;
+    top:-10rem;
+    left: 48%;
+}
+.image{
+    height: 300px;
+    width:  300px;
+}
+
+   
+
+   
+</style>
+{% endblock %}
+
+{% block Bodyblock %}
+
+
+{% if transaction %}
+
+<div class="content">
+    <div>
+        Payment Sucessful
+    </div>
+    
+    <img src="/static/images/success.gif" class="image"/>
+</div>
+
+{% else%}
+<div class="content">
+    <div>
+        Payment Failed
+    </div>
+    
+    <img src="/static/images/failed.gif" class="image"/>
+</div>
+
+{% endif %}
+<div>
+    <a href="{{url_for('homepage')}}" class="btn btn-warning">Click Here To Continue</a>
+</div>
+
+{% endblock %}

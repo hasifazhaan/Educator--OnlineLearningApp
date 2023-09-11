@@ -1,0 +1,279 @@
+body{
+  background-color: rgba(0, 0, 15, 0.9);
+}
+.navbar{
+  background-color: rgb(36, 36, 53);
+  top:0;
+}
+.nav-link{
+  color: #fff;
+}
+.payment_container {
+  position: relative;
+  color: #fff;
+  padding: 1% 4%;
+  margin-top: 8%;
+}
+.payment_details {
+  background-color: rgba(82, 82, 82, 0.829);
+  margin: 2%;
+  padding: 1% 2%;
+  width: 60%;
+}
+.user_details,
+.product_details,
+.payment {
+  background-color: rgba(43, 42, 42, 0.1);
+  height: 100%;
+  width: 100%;
+  padding: 3%;
+  border-radius: 15px;
+  margin-top: 2%;
+}
+
+hr {
+  border: 1px solid gray;
+}
+.bill {
+  top: 22%;
+  left: 63%;
+  width: 33%;
+  position: absolute;
+  padding: 2%;
+  background-color: rgba(82, 82, 82, 0.829);
+}
+.btn-success {
+  margin-top: 3%;
+}
+
+.card1 {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+.card1-title {
+  font-size: 30px;
+}
+.card1-img-top {
+  height: 300px;
+  padding: 3%;
+}
+.price {
+  font-size: 25px;
+}
+.details {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.details > * {
+  padding: 2%;
+}
+.bill p {
+  font-size: 20px;
+}
+.payment-cards{
+  display: flex;
+  align-items:  center;
+  justify-content: space-evenly;
+  overflow-y: hidden  ; 
+  padding-bottom: 30px;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i");
+
+.card {
+  width: 320px;
+  height: 190px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  perspective: 600px;
+}
+
+.card__part {
+  box-shadow: 1px 1px #aaa3a3;
+  top: 0;
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  display: inline-block;
+  width: 320px;
+  height: 190px;
+  background-image: url("https://image.ibb.co/bVnMrc/g3095.png"),
+    linear-gradient(
+      to right bottom,
+      #fd696b,
+      #fa616e,
+      #f65871,
+      #f15075,
+      #ec4879
+    ); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.card__front {
+  padding: 18px;
+  transform: rotateY(0);
+  -moz-transform: rotateY(0);
+}
+
+.card__back {
+  padding: 18px 0;
+  transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+}
+
+.card__black-line {
+  margin-top: 5px;
+  height: 38px;
+  background-color: #303030;
+}
+
+.card__logo {
+  height: 16px;
+}
+
+.card__front-logo {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+.card__square {
+  border-radius: 5px;
+  height: 30px;
+}
+
+.card_numer {
+  display: block;
+  width: 100%;
+  word-spacing: 4px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.card__space-75 {
+  width: 75%;
+  float: left;
+}
+
+.card__space-25 {
+  width: 25%;
+  float: left;
+}
+
+.card__label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+.card__info {
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card__back-content {
+  padding: 15px 15px 0;
+}
+.card__secret--last {
+  color: #303030;
+  text-align: right;
+  margin: 0;
+  font-size: 14px;
+}
+
+.card__secret {
+  padding: 5px 12px;
+  background-color: #fff;
+  position: relative;
+}
+
+.card__secret:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  height: calc(100% + 6px);
+  width: calc(100% - 42px);
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ededed,
+    #ededed 5px,
+    #f9f9f9 5px,
+    #f9f9f9 10px
+  );
+}
+
+.card__back-logo {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.card__back-square {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+.cvv {
+  width: 12%;
+}
+
+
+.card:hover .card__front {
+  transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.card:hover .card__back {
+  transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+}
+
+.add-new{
+  height: 140px;
+  width: 140px;
+  background-color:#858383;
+  place-content: center;
+  color:#fff;
+  display: grid;
+}
+.Symbol{
+  font-size:100px;
+  padding: 0 30px ;
+  margin-top:30px;
+  background-color: transparent;
+  border: none;
+}
+
+.add-new:hover{
+  transform: translate(1%,1%);
+}
+input[type='radio']{
+  position: relative;
+  top:-70px;
+}
